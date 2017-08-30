@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.somnus.androidcomponentdemo"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (IsBuildMudle.toBoolean()) {
+                java.srcDirs += "src/main/debug/java/";
+            } else {
+                java.srcDirs += "src/main/release/java/";
+            }
+        }
+    }
+}
+
+dependencies {
+    println IsBuildMudle.toBoolean()
+    if (!IsBuildMudle.toBoolean()) {
+        compile project(':modulea')
+        compile project(':moduleb')
+    } else {
+        compile project(':BaseLibrary')
+    }
+
+//    // 替换成最新版本, 需要注意的是api
+//    // 要与compiler匹配使用，均使用最新版可以保证兼容
+    compile 'com.alibaba:arouter-api:1.2.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
+
+
+
+}
