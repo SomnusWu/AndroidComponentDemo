@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.somnus.baselibrary.ARouterUtils;
 import com.somnus.baselibrary.Constans;
+import com.somnus.modulea.ModuleAConstans;
+import com.somnus.moduleb.ModuleBConstans;
 
 
 @Route(path = Constans.ArouterAppPath)
@@ -35,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouterUtils.toAouter(Constans.ArouterPathModuleAPath);
-//                ARouterUtils.toAouter(Constans.ArouterPathActivity2Path);
+                ARouterUtils.toAouter(ModuleAConstans.ArouterPathModuleAPath);
             }
         });
         findViewById(R.id.buttonB).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouterUtils.toAouter(Constans.ArouterPathModuleBPath);
+                ARouterUtils.toAouter(ModuleBConstans.ArouterPathModuleBPath);
             }
         });
     }
