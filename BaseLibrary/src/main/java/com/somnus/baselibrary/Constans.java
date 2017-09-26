@@ -7,6 +7,7 @@ package com.somnus.baselibrary;
  */
 
 public class Constans {
+    public static final boolean isDebug = true;
     public static final String ArouterParentPath = "/somnus/";
     public static final String ArouterAppPath = ArouterParentPath+"app";
     public static final String ArouterParentUri = "arouter://m.somnus.com" + ArouterParentPath;
